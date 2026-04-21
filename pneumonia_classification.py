@@ -19,6 +19,21 @@ fit = True #make fit false if you do not want to train the network again
 train_dir = "c:/Users/diana/Documents/CompVision/dataset/chest_xray/chest_xray/train"
 test_dir = "c:/Users/diana/Documents/CompVision/dataset/chest_xray/chest_xray/test"
 
+# Dataset Balance Check
+import os
+
+bacterial_count = len(os.listdir(train_dir + "/BACTERIAL"))
+normal_count = len(os.listdir(train_dir + "/NORMAL"))
+viral_count = len(os.listdir(train_dir + "/VIRAL"))
+
+print("\nDataset distribution:")
+print("BACTERIAL:", bacterial_count)
+print("NORMAL:", normal_count)
+print("VIRAL:", viral_count)
+
+total = bacterial_count + normal_count + viral_count
+print("Total images:", total)
+
 with tf.device('/gpu:0'):
     
     #create training,validation and test datatsets
